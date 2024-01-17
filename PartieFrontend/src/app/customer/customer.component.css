@@ -1,0 +1,52 @@
+table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse table borders for equal spacing */
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: auto;
+  padding: 8px; /* Adjust cell padding */
+  text-align: center; /* Center-align content */
+}
+
+td.buttons-cell {
+  width: 15%;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between; /* Distribute buttons with space between */
+  align-items: center; /* Center buttons vertically */
+}
+
+.white-icon {
+  color: white;
+}
+
+.custom-header {
+  background-color: #070736;
+  color: white;
+}
+
+.custom-table {
+  font-size: 14px;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 8px 10px; /* Adjust cell padding */
+}
+
+.dialog-content {
+  display: block;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

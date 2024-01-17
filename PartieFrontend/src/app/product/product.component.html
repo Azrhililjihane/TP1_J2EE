@@ -1,0 +1,111 @@
+<div class="container mt-2">
+  <div *ngIf="!isAdding">
+    <ng-container *ngIf="products | async as listProducts; else failureOrLading">
+      <div class="card">
+        <div class="card-header custom-header">
+          Manage your products
+          <button (click)="onAdd()" data-bs-toggle="modal" data-bs-target="#exampleModal" mat-raised-button color="primary" style="left:62%;" >
+            <mat-icon>add</mat-icon>New product
+          </button>
+        </div>
+        <div class="card-body">
+          <div *ngIf="searchFormGroup">
+            <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchProducts()">
+              <div class="input-group">
+                <label class="input-group-text">Search </label>
+                <input type="text" formControlName="keyword" class="form-control">
+                <button class="btn btn-info">
+                  <mat-icon class="white-icon">search</mat-icon>
+                </button>
+              </div>
+            </form>
+          </div>
+          <table class="table custom-table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Tools</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of listProducts">
+              <td>{{product.id}}</td>
+              <td>{{product.name}}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>
+                <button (click)="handleDeleteProduct(product)" class="btn btn-danger" style="margin-right: 10px;">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+                <button type="button" class="btn btn-success">
+                  <mat-icon>create</mat-icon>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #failureOrLading>
+      <ng-container *ngIf="errorMessage; else loading">
+        <div class="text-danger">
+          {{errorMessage}}
+        </div>
+      </ng-container>
+      <ng-template #loading>
+        Loading .....
+      </ng-template>
+    </ng-template>
+  </div>
+
+  <div *ngIf="isAdding">
+    <form [formGroup]="productForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <span class="text-danger"
+              *ngIf="productForm.controls['name'].touched
+                  && productForm.controls['name'].errors
+                  && productForm.controls['name'].errors!['required']">
+              Name is required
+            </span>
+      </div>
+      <div class="mb-3">
+        <mat-form-field floatLabel="always">
+          <mat-label>Price</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" class="form-control" id="price" formControlName="price">
+          <span matTextPrefix>MAD&nbsp;</span>
+          <span class="text-danger"
+                *ngIf="productForm.controls['price'].touched
+                  && productForm.controls['price'].errors
+                  && productForm.controls['price'].errors!['required']">
+              Price is required
+            </span>
+        </mat-form-field> </div>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input type="number" class="form-control" id="quantity" formControlName="quantity">
+        <span class="text-danger"
+              *ngIf="productForm.controls['quantity'].touched
+                  && productForm.controls['quantity'].errors
+                  && productForm.controls['quantity'].errors!['required']">
+              Quantity is required
+            </span>
+      </div>
+      <div class="button-container">
+        <button (click)="handleSaveProduct()" [disabled]="!productForm.valid" class="mt-3 btn btn-primary">Enregistrer</button>
+
+        <button (click)="cancelAdd()" class="mt-3 btn btn-secondary">Annuler</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+
+

@@ -1,0 +1,74 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.custom-button {
+  margin-right: 70px;
+  margin-top: 30px;
+}
+.example-icon{
+  margin-right: 10px;
+}
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+.mat-dark-theme {
+  background: #2c2f2f;
+  color: #fff;
+}
+.custom-sidenav {
+  width: 300px;
+  color: white;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.user-name {
+  font-size: 20px;
+  padding: 16px;
+  font-weight: bold;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.menu-text {
+  font-size: 18px;
+  color: darkslategrey;
+  position: center;
+}
+
+/* Apply white text color for mat-list-item and anchor tags */
+.mat-list-item,
+.mat-list-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.mat-list-item a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+.page-content {
+  height: calc(100vh - 64px);
+  background-color: whitesmoke;
+  padding: 16px;
+}
+
